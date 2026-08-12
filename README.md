@@ -9,7 +9,7 @@ workflow, no code.
 - **Every render watermarked** (imperceptible, detectable)
 - **$10 a month for one million tokens**, or unlimited, unmetered stream plans from **$150/mo** (annual)
 
-Free key starts at **100,000 tokens, no card**: [gandr.ai](https://gandr.ai)
+Free key starts at **50,000 tokens, no card**: [gandr.ai](https://gandr.ai)
 
 ## Install
 
