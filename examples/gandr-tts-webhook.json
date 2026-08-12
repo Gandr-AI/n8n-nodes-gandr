@@ -1,0 +1,75 @@
+{
+  "name": "Gandr TTS webhook",
+  "nodes": [
+    {
+      "id": "wh1",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "gandr-tts",
+        "responseMode": "responseNode"
+      },
+      "webhookId": "07158733-c963-4add-9da4-866f3f711c4c"
+    },
+    {
+      "id": "g1",
+      "name": "Gandr",
+      "type": "n8n-nodes-gandr.gandr",
+      "typeVersion": 1,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "text": "={{ $json.body.text }}",
+        "voice": "gandr-mia",
+        "language": "en",
+        "speed": 1
+      }
+    },
+    {
+      "id": "r1",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "respondWith": "binary"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Gandr",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gandr": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {}
+}
