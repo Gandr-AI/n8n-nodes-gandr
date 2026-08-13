@@ -34,7 +34,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "Bearer gnd_n8n-demo_4000_27391c9115329ad6f420ce9f92a6ebfa"
+              "value": "Bearer <your-gnd-key>"
             }
           ]
         },
