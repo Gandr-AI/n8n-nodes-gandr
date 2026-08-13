@@ -1,0 +1,87 @@
+{
+  "name": "Gandr TTS webhook (HTTP node, no community node)",
+  "nodes": [
+    {
+      "id": "wh2",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "gandr-tts-http",
+        "responseMode": "responseNode"
+      },
+      "webhookId": "992f9881-3b0d-4af9-b5ad-601c1c77b811"
+    },
+    {
+      "id": "h2",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://tts.gandr.ai/v1/audio/speech",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer gnd_n8n-demo_4000_27391c9115329ad6f420ce9f92a6ebfa"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"input\": \"={{ $json.body.text }}\",\n  \"voice\": \"gandr-mia\",\n  \"response_format\": \"wav\"\n}",
+        "responseFormat": "file",
+        "options": {}
+      }
+    },
+    {
+      "id": "r2",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "respondWith": "binary"
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {}
+}
