@@ -1,4 +1,4 @@
-/** Gandr API credential: one key, from gandr.ai (free key, 100,000 tokens, no card). */
+/** Gandr API credential: one key, from gandr.ai (free key starts at 50,000 tokens). */
 class GandrApi {
   name = "gandrApi";
   displayName = "Gandr API";
@@ -11,7 +11,7 @@ class GandrApi {
       typeOptions: { password: true },
       default: "",
       required: true,
-      description: "Your Gandr key (gnd_...). Free key: 100,000 tokens, no card.",
+      description: "Your Gandr key (gnd_...). Free key starts at 50,000 tokens.",
     },
   ];
 }

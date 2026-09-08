@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-gandr",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "n8n community node for the Gandr TTS API. First audio byte in 146 ms over the open internet, 116 ms p50 first audio, server side warm. 23 languages, every render watermarked.",
   "files": ["credentials", "nodes", "README.md"],
   "keywords": ["n8n", "n8n-community-node-package", "tts", "text-to-speech", "voice-agents", "gandr"],
